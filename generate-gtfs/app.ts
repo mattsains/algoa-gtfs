@@ -1,5 +1,7 @@
+import JSZip from "jszip";
 import { OtpApi } from "./lib/otpapi/otpapi";
 import { Route, RouteShort, RouteType, StopShort } from "./lib/otpapi/types";
+import * as fs from 'fs';
 
 const apiBaseUri = "https://otp.algoabus.co.za/otp/routers/default/index/"
 
@@ -8,9 +10,19 @@ export const lambdaHandler = async (): Promise<any> =>  {
     const routes = await api.getRoutes();
     let agencyFile = generateAgencyString();
     let calendarFile = generateCalendarString();
-    let routesFile = routes.reduce((routesOutSoFar, cur) => routesOutSoFar += "\n" + generateRouteString(cur), generateRouteString());
+    let routesFile = [undefined, ...routes].map(r => generateRouteString(r)).join("\n");
 
-    // TODO: we should be saving all of these to files and then zipping it into a gtfs archive using jszip.
+    
+    const zip = new JSZip();
+    zip.file("agency.txt", agencyFile);
+    zip.file("calendar.txt", calendarFile);
+    zip.file("routes.txt", routesFile);
+    const zipFile = await zip.generateAsync({type: "nodebuffer"});
+    const outFile = fs.createWriteStream("/tmp/gtfs.zip");
+    outFile.write(zipFile);
+    outFile.close()
+    console.log(routes.length)
+    console.log(routesFile.replace("\n", " "))
     // GTFS ref is here: https://gtfs.org/schedule/reference
 };
 

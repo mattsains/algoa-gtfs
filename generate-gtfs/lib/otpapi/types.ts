@@ -25,7 +25,6 @@ export type PatternDetail = PatternShort & {
     trips: TripShort[];
 }
 
-
 export type Agency = {
     id: string;
     name: string;

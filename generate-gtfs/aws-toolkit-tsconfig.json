@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "inlineSourceMap": true,
+        "outDir": "D:\\Matt\\Documents\\coding-projects\\algoa-gtfs\\generate-gtfs",
+        "rootDir": ".",
+        "sourceRoot": "D:/Matt/Documents/coding-projects/algoa-gtfs/generate-gtfs",
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "types": [
+            "node"
+        ]
+    }
+}
