@@ -7,9 +7,7 @@ This project contains source code and supporting files for a serverless applicat
 - generate-gtfs/tests - Unit tests for the application code. 
 - template.yaml - A template that defines the application's AWS resources.
 
-
-
-## Deploy the sample application
+## Deploy the application
 To use the SAM CLI, you need the following tools.
 
 * SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
@@ -23,7 +21,7 @@ sam build
 sam deploy --guided
 ```
 
-The first command will build the source of your application. The second command will package and deploy your application to AWS, with a series of prompts:
+The first command will build the source of your application. The second command will package and deploy your application to AWS, with a series of prompts (unnecessary).
 
 
 ## Use the SAM CLI to build and test locally
