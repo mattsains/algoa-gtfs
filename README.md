@@ -31,7 +31,7 @@ Install the prerequisites from the last step.
 Build your application with the `sam build` command.
 
 ```bash
-algoa-gtfs$ sam build
+sam build
 ```
 
 The SAM CLI installs dependencies defined in `hello-world/package.json`, compiles TypeScript with esbuild, creates a deployment package, and saves it in the `.aws-sam/build` folder.
@@ -39,7 +39,7 @@ The SAM CLI installs dependencies defined in `hello-world/package.json`, compile
 Run functions locally and invoke them with the `sam local invoke` command.
 
 ```bash
-algoa-gtfs$ sam local invoke 
+sam local invoke 
 ```
 
 ## Add a resource to your application
@@ -52,19 +52,19 @@ To simplify troubleshooting, SAM CLI has a command called `sam logs`. `sam logs`
 `NOTE`: This command works for all AWS Lambda functions; not just the ones you deploy using SAM.
 
 ```bash
-algoa-gtfs$ sam logs -n HelloWorldFunction --stack-name algoa-gtfs --tail
+sam logs -n AlgoaGtfsFunction --stack-name algoa-gtfs --tail
 ```
 
 You can find more information and examples about filtering Lambda function logs in the [SAM CLI Documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-logging.html).
 
 ## Unit tests
 
-Tests are defined in the `hello-world/tests` folder in this project. Use NPM to install the [Jest test framework](https://jestjs.io/) and run unit tests.
+Tests are defined in the `generate-gtfs/tests` folder in this project. Use NPM to install the [Jest test framework](https://jestjs.io/) and run unit tests.
 
 ```bash
-algoa-gtfs$ cd hello-world
-hello-world$ npm install
-hello-world$ npm run test
+cd generate-gtfs
+npm install
+npm run test
 ```
 
 ## Cleanup
@@ -78,5 +78,3 @@ aws cloudformation delete-stack --stack-name algoa-gtfs
 ## Resources
 
 See the [AWS SAM developer guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) for an introduction to SAM specification, the SAM CLI, and serverless application concepts.
-
-Next, you can use AWS Serverless Application Repository to deploy ready to use Apps that go beyond hello world samples and learn how authors developed their applications: [AWS Serverless Application Repository main page](https://aws.amazon.com/serverless/serverlessrepo/)
